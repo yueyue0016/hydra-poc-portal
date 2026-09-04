@@ -17,7 +17,7 @@ Desktop → the AE gets an access link + password.
 | `portal/skills/` | Agent skills: `research`, `poc`, `azureops` (sandbox allocation + exec/upload client), `media` (desktop assets), `mediaproc` (LLM-written bash to process uploaded files), `knowledge` (harvests reusable skills/tools from successful PoCs). |
 | `sandbox-image/` | `hydra-desktop:v4` — sandbox image for the session pool: webtop XFCE base + ffmpeg/ImageMagick/sox + token-gated in-sandbox exec/upload agent (`exec-agent.py`, s6 service) + nginx self-heal script. |
 | `desktop-base/` | `hydra-desktop:v1` — the base desktop image (webtop XFCE + Chrome + FileZilla + CLI tools). |
-| `docs/design-zh.md` | Full design doc (Chinese): architecture, approval gates, pitfalls, demo script. |
+| `docs/design.md` | Full design doc: architecture, approval gates, pitfalls, demo script. |
 
 ## Deployed topology (East Asia)
 
@@ -68,7 +68,7 @@ az containerapp update -n hydra-poc-portal -g <rg> \
 - Portal `DATA_DIR` is an ephemeral container disk — records/docs reset on
   redeploy (mount Azure Files for production).
 - Sandboxes auto-recycle after cooldown; desktop files are per-session.
-- See `docs/design-zh.md` §9 for the webtop/dynamic-sessions pitfalls
+- See `docs/design.md` §9 for the webtop/dynamic-sessions pitfalls
   (nginx config paths, CUSTOM_PORT residue, websockets pinning).
 
 > Internal pre-sales tooling. AI-generated PoC content must be verified before
